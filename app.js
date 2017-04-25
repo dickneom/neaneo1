@@ -6,7 +6,19 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var login = require('./routes/login');
+var logout = require('./routes/logout');
 var users = require('./routes/users');
+
+var session = exressSession({
+  secret: 'lkjsfffws',
+  key: 'sessionServidor',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 30
+  }
+});
 
 var app = express();
 
@@ -22,7 +34,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(req, res, next) {
+    console.log('****** (global dresses) ATENDIENDO LA RUTA: ' + req.url + ' METODO: ' + req.method);
+
+    if (req.method === 'GET') {
+        if (req.url !== '/login') {
+            req.session.lastUrlGet = req.url;
+            console.log('****** (global dresses) Guardada la ruta: ' + req.session.lastUrlGet);
+        }
+    }
+
+    next();
+});
+
 app.use('/', index);
+app.user('/login', login);
+app.user('/logout', logout);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
