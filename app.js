@@ -49,8 +49,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 });*/
 
 app.use('/', index);
-app.user('/login', login);
-app.user('/logout', logout);
+app.use('/login', login);
+app.use('/logout', logout);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
