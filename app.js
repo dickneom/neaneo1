@@ -4,14 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var expressSession = require('express-session');
+//var expressSession = require('express-session');
 
 var index = require('./routes/index');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 var users = require('./routes/users');
 
-var session = exressSession({
+/*var session = exressSession({
   secret: 'lkjsfffws',
   key: 'sessionServidor',
   resave: true,
@@ -19,7 +19,7 @@ var session = exressSession({
   cookie: {
     maxAge: 1000 * 60 * 60 * 24 * 30
   }
-});
+});*/
 
 var app = express();
 
@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(function(req, res, next) {
+/*app.use(function(req, res, next) {
     console.log('****** (global dresses) ATENDIENDO LA RUTA: ' + req.url + ' METODO: ' + req.method);
 
     if (req.method === 'GET') {
@@ -46,7 +46,7 @@ app.use(function(req, res, next) {
     }
 
     next();
-});
+});*/
 
 app.use('/', index);
 app.user('/login', login);
