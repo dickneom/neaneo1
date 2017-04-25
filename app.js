@@ -11,14 +11,14 @@ var login = require('./routes/login');
 var logout = require('./routes/logout');
 var users = require('./routes/users');
 
-var session = exressSession({
-  secret: 'lkjsfffws',
-  key: 'sessionServidor',
-  resave: true,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 30
-  }
+var session = expressSession({
+    secret: 'lkjsfffws',
+    key: 'sessionServidor',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 30
+    }
 });
 
 var app = express();
