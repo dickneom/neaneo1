@@ -1,0 +1,59 @@
+extends ../layout
+include ../mixins/links
+
+block content
+  h1 Ver Vestido
+
+  if dress
+    .row
+      .panel.panel-info
+        .panel-heading.text-center
+          h1= dress.title
+        .panel-body
+          .col-sm-6.text-center
+            .row
+              img(src=dress.photos[0].photo_url width=300 height=500 alt=dress.image)
+              //-img(src=dress.image width=200 height=300 alt=dress.image)
+            .row
+              each photo in dress.photos
+                .col-sm-2
+                  a(href='#' ): img(src=photo.photo_url width=40 height=60)
+                  //-p Imagen: #{photo.photo_url}
+          .col-sm-6
+            p= dress.description
+            p= dress.brand.brand
+            p= dress.state.title
+            p= dress.color.color
+            if dress.forRent
+              p Precio de alquiler: #{dress.priceForRent}
+            if dress.forSale
+              p Precio de venta: #{dress.priceForSale}
+            p Precio original: #{dress.priceOriginal}
+            //- Para mostrar el propietario, si es un usuario registrado es un enlace, caso contrario es un texto
+            if dress.user
+              if dress.user.nickname
+                if sessionUser
+                  +linkShowUser(dress.user.id, dress.user.nickname)
+                  //- a(href='/users/' + dress.user.id) #{dress.user.nickname}
+                else
+                  p #{dress.user.nickname}
+              else
+                if sessionUser
+                  +linkShowUser(dress.user.id, dress.user.fullname)
+                  //- a(href='/users/' + dress.user.id) #{dress.user.fullname}
+                else
+                  p #{dress.user.fullname}
+        .panel-footer
+          if sessionUser
+            .row
+              .col-sm-12.text-center
+                a(href='/dresses/' + dress.id + '/like'): button(type='button') Agregar Favorito
+                a(href='/dresses/' + dress.id + '/buy'): button(type='button') Comprar
+                if sessionUser.id === dress.userId
+                  a(href='/dresses/' + dress.id + '/edit'): button(type='button') Editar
+                if sessionUser.isAdmin
+                  a(href='/dresses/' + dress.id + '/publish_acept'): button(type='button') Aprobar
+                  a(href='/dresses/' + dress.id + '/publish_reject'): button(type='button') Reprobar
+
+  else
+    p dress no encontrado o vacio

@@ -1,0 +1,51 @@
+//-   MENUS
+mixin menu-top(sessionUser)
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    .container
+      .navbar-header
+        button.navbar-toggle(data-toggle='collapse' data-target='#dcMenu')
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href='/'): img(src='/images/brand/logo.jpg' alt='Logo' width=100 height=25)
+        a.navbar-brand(href='/') DressCloset
+      .collapse.navbar-collapse#dcMenu
+        if (sessionUser)
+          if (sessionUser.nickname)
+            p.navbar-text= sessionUser.nickname
+          else
+            p.navbar-text= sessionUser.fullname
+        ul.nav.navbar-nav.navbar-right
+          if (pageName !== 'dresses' && sessionUser)
+            li: a(href='/dresses/closet') Closet
+          if (sessionUser)
+            if (pageName !== 'dresses_wishes')
+              li: a(href='/dresses/wishes') Favoritos
+            if (pageName !== 'user_profile')
+              li: a(href='/users/profile') Perfil
+            li: a(href='/messages') Mensajes 
+              span.badge #{sessionUser.messageCount}
+          else
+            if (pageName !== 'login')
+              li: a(href='/login') Ingresar
+            if (pageName !== 'register')
+              li: a(href='/register') Registrar
+          li.dropdown: a.dropdown-toggle(href='#' data-toggle='dropdown') Menu
+            span.caret
+            ul.dropdown-menu(role='menu')
+              li.dropdown-header(role='presentation') Administrador
+              li(role='presentation'): a(href='/users' role='menuitem') Usuarios
+              li.divider(role='presentation')
+              li.dropdown-header(role='presentation') Usuario
+              li(role='presentation'): a(href='/users/profile' role='menuitem') Perfil
+              li(role='presentation'): a(href='/dresses/closet' role='menuitem') Closet
+              li(role='presentation'): a(href='/dresses/wishes' role='menuitem') Favoritos
+              li(role='presentation'): a(href='/dresses/mycloset' role='menuitem') Mi Closet
+              li(role='presentation'): a(href='/messages' role='menuitem') Mensajes
+                if sessionUser 
+                  span.badge  #{sessionUser.messageCount}
+              li.divider(role='presentation')
+              if sessionUser
+                li(role='presentation'): a(href="/logout" role='menuitem') Salir
+              else
+                li.disabled(role='presentation'): a(href="/logout" role='menuitem') Salir

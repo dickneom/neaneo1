@@ -1,0 +1,35 @@
+extends ../layout
+include ../mixins/links
+
+block content
+  //-.container
+  .row
+    .col-sm-8.col-sm-offset-2
+      .panel.panel-info
+        .panel-heading
+          h3 Perfil del usuario
+        .panel-body
+          .row
+            .col-sm-6
+              img.img-circle(src=user.picture width=180 height=300 alt=user.picture)
+              //- p= user.picture
+            .col-sm-6
+              p= user.id
+              p Alias #{user.nickname}
+              p Nombre: #{user.fullname}
+              p Email: #{user.email}
+              if user.authenticated
+                p AUTENTICADO
+              else
+                p NO AUTENTICADO
+              p Fecha de Nacimiento: #{user.birthdate}
+              p Admnistrador: #{user.isAdmin}
+        .panel-footer
+          .row
+            +linkChangePictUser(sessionUser.id)
+            +linkChangePassUser()
+            +linkUpdateUser(sessionUser.id)
+            //- ul
+              //- li: a(href='/users/' + sessionUser.id + '/images') Cambiar foto
+              //- li: a(href='/users/pass_change') Cambiar clave
+              //- li: a(href='/users/' + sessionUser.id + '/update') Editar datos

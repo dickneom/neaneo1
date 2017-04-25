@@ -1,0 +1,61 @@
+mixin input(label, type, field, value, errors)
+  .form-group
+    if (type !== 'hidden')
+      label(for=field)= label
+    if value
+      input.form-control(type=type name=field value=value)
+    else
+      input.form-control(type=type name=field)
+    br
+    +input_error(errors, field)
+
+
+
+
+
+mixin input_required(label, type, field, value, errors)
+  .form-group
+    if (type !== 'hidden')
+      label(for=field)= label
+    if value
+      input.form-control(type=type name=field value=value required)
+    else
+      input.form-control(type=type name=field required)
+    br
+    +input_error(errors, field)
+
+
+
+
+
+mixin input_readonly(label, type, field, value, errors)
+  .form-group
+    if (type !== 'hidden')
+      label(for=field)= label
+    if value
+      input.form-control(type=type name=field value=value readonly)
+    else
+      input.form-control(type=type name=field readonly)
+    br
+
+
+
+
+
+mixin input_checkbox(label, field, value)
+  label(for=field)= label
+  if value
+    input(type='checkbox' name=field checked)
+  else
+    input(type='checkbox' name=field)
+  br
+
+
+
+
+
+mixin input_error(errors, field)
+  if (errors)
+    each error in errors
+      if (error.path == field)
+        li.error ERROR. #{error.message}

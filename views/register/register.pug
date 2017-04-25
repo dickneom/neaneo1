@@ -1,0 +1,37 @@
+extends ../layout
+include ../mixins/form_input
+
+block content
+  .row
+    .col-sm-6.col-sm-offset-3
+      h1 Registrar Usuario
+
+      if (errors)
+        ul
+          each error in errors
+            li.error  Error en: #{error.path} error: #{error.message}
+
+      if user
+        p user encontrado
+        form(method='post' action='/register')
+          +input_readonly('Id', 'text', 'userId', '', errors)
+          +input_required('Alias', 'text', 'nickname', user.nickname, errors)
+          +input_required('Nombre', 'text', 'firstname', user.firstname, errors)
+          +input_required('Apellido', 'text', 'lastname', user.lastname, errors)
+          +input_required('Email', 'email', 'email', user.email, errors)
+          +input_required('Fecha de nacimiento', 'date', 'birthdate', user.birthdate, errors)
+          +input_required('Constraseña', 'password', 'password', null, errors)
+          +input_required('Repetir Constraseña', 'password', 'password1', null, null)
+          button(type='submit') Grabar
+      else
+        p user no encontrado o vacio
+        form(method='post' action='/register')
+          +input_readonly('Id', 'text', 'userId', '', null)
+          +input_required('Alias', 'text', 'nickname', null, null)
+          +input_required('Nombre', 'text', 'firstname', null, null)
+          +input_required('Apellido', 'text', 'lastname', null, null)
+          +input_required('Email', 'email', 'email', null, null)
+          +input_required('Fecha de nacimiento', 'date', 'birthdate', null, null)
+          +input_required('Constraseña', 'password', 'password', null, null)
+          +input_required('Repetir Constraseña', 'password', 'password1', null, null)
+          button(type='submit') Grabar

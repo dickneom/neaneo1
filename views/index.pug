@@ -1,5 +1,13 @@
 extends layout
+include mixins/dress_grid
+include mixins/pagination
 
 block content
-  h1= title
-  p Welcome to #{title} (NeaNeo)
+  h1 Lista de vestidos
+    small (Index)
+
+  +paginationIndex(limit, page)
+
+  +showDressGrid(dresses, 'index', countCols)
+
+  +paginationIndex(limit, page)

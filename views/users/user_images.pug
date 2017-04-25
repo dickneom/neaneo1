@@ -1,0 +1,30 @@
+extends ../layout
+include ../mixins/form_input
+
+block content
+  .container
+    h1 Foto del Usuario
+    br
+    if (errors)
+      ul
+        each error in errors
+          li.error  Error en: #{error.path} error: #{error.message}
+
+  .container
+    .row
+      .col-sm-9
+        .row
+          a(href='/users/profile') Regresar
+        .row
+          if user
+            form(method='post' action='/users/images' enctype='multipart/form-data')
+              +input_readonly('ID usuario', 'text', 'userId', user.id, null)
+              img(src=user.picture width=150 height=200 alt='Usuario')
+              input(type='file'  name='image')
+              if (user.image)
+                button(type='submit') Cambiar imagen
+              else
+                button(type='submit') Subir imagen
+
+      .col-sm-3
+        p Publicidad

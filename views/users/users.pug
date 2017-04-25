@@ -1,0 +1,23 @@
+extends ../layout
+include ../mixins/links
+
+block content
+  h1 Lista de Usuarios
+
+  //a(href='/users/create') Agregar Usuario
+  +linkCreateUser()
+  if users
+    each user in users
+      .panel.panel-info
+        .panel-body
+          p
+            = user.nickname
+            = user.fullname
+            //.panel-footer
+              a(href='/users/' + user.id) Ver
+              a(href='/users/' + user.id + '/update') Editar
+              hr
+            +linkAdminShowUser(user.id)
+            +linkAdminUpdateUser(user.id)
+  else
+    p users no encontrado o vacio

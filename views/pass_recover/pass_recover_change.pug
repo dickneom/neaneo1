@@ -1,0 +1,15 @@
+extends ../layout
+include ../mixins/form_input
+
+block content
+  h1 Cambio de clave
+
+  if errors
+    each error in errors
+      p.error= error
+
+  form(action='/pass_recover/change' method='post')
+    +input_readonly('', 'text', 'id', userId, null)
+    +input_required('Contraseña', 'password', 'password', null, null)
+    +input_required('Repetir contraseña', 'password', 'password1', null, null)
+    button(type='submit') Enviar

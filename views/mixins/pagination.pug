@@ -1,0 +1,67 @@
+mixin paginationIndex(limit, page)
+  ul.pagination.pagination-sm.justify-content-right
+    if page > 1
+      li.page-item: a(href='/?limit='+limit+'&page='+(1)).page-link Primera
+      li.page-item: a(href='/?limit='+limit+'&page='+(page-1)).page-link Anterior
+    else
+      li.page-item.disabled: a(href='/?limit='+limit+'&page='+(1)).page-link Primera
+      li.page-item.disabled: a(href='/?limit='+limit+'&page='+(page)).page-link Anterior
+
+    li.page-item.active: a(href='#').page-link #{page}
+
+    li.page-item: a(href='/?limit='+limit+'&page='+(page+1)).page-link Siguiente
+    li.page-item.disabled: a(href='/?limit='+limit+'&page='+(page+1)).page-link Ultima
+
+
+
+
+
+mixin paginationCloset(limit, page)
+  ul.pagination.pagination-sm.justify-content-right
+    if page > 1
+      li.page-item: a(href='/dresses?limit='+limit+'&page='+(1)).page-link Primera
+      li.page-item: a(href='/dresses?limit='+limit+'&page='+(page-1)).page-link Anterior
+    else
+      li.page-item.disabled: a(href='/dresses?limit='+limit+'&page='+(1)).page-link Primera
+      li.page-item.disabled: a(href='/dresses?limit='+limit+'&page='+(page)).page-link Anterior
+
+    li.page-item.active: a(href='#').page-link #{page}
+
+    li.page-item: a(href='/dresses?limit='+limit+'&page='+(page+1)).page-link Siguiente
+    li.page-item.disabled: a(href='/dresses?limit='+limit+'&page='+(page+1)).page-link Ultima
+
+
+
+
+
+mixin paginationWishes(limit, page)
+  ul.pagination.pagination-sm.justify-content-right
+    if page > 1
+      li.page-item: a(href='/dresses/wishes?limit='+limit+'&page='+(1)).page-link Primera
+      li.page-item: a(href='/dresses/wishes?limit='+limit+'&page='+(page-1)).page-link Anterior
+    else
+      li.page-item.disabled: a(href='/dresses/wishes?limit='+limit+'&page='+(1)).page-link Primera
+      li.page-item.disabled: a(href='/dresses/wishes?limit='+limit+'&page='+(page)).page-link Anterior
+
+    li.page-item.active: a(href='#').page-link #{page}
+
+    li.page-item: a(href='/dresses/wishes?limit='+limit+'&page='+(page+1)).page-link Siguiente
+    li.page-item.disabled: a(href='/dresses/wishes?limit='+limit+'&page='+(page+1)).page-link Ultima
+
+
+
+
+
+mixin paginationMyCloset(limit, page)
+  ul.pagination.pagination-sm.justify-content-right
+    if page > 1
+      li.page-item: a(href='/dresses/mycloset?limit='+limit+'&page='+(1)).page-link Primera
+      li.page-item: a(href='/dresses/mycloset?limit='+limit+'&page='+(page-1)).page-link Anterior
+    else
+      li.page-item.disabled: a(href='/dresses/mycloset?limit='+limit+'&page='+(1)).page-link Primera
+      li.page-item.disabled: a(href='/dresses/mycloset?limit='+limit+'&page='+(page)).page-link Anterior
+
+    li.page-item.active: a(href='#').page-link #{page}
+
+    li.page-item: a(href='/dresses/mycloset?limit='+limit+'&page='+(page+1)).page-link Siguiente
+    li.page-item.disabled: a(href='/dresses/mycloset?limit='+limit+'&page='+(page+1)).page-link Ultima

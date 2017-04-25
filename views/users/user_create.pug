@@ -1,0 +1,35 @@
+extends ../layout
+include ../mixins/form-input
+
+block content
+  h1 Crear Usuario
+
+  if (errors)
+    ul
+      each error in errors
+        li.error  Error en: #{error.path} error: #{error.message}
+
+  if user
+    p user encontrado
+    form(method='post' action='/users/edit')
+      +input('Id', 'text', 'userId', '', errors)
+      +input('Alias', 'text', 'nickname', user.nickname, errors)
+      +input('Nombre', 'text', 'firstname', user.firstname, errors)
+      +input('Apellido', 'text', 'lastname', user.lastname, errors)
+      +input('Email', 'email', 'email', user.email, errors)
+      +input('Fecha de nacimiento', 'date', 'birthdate', user.birthdate, errors)
+      +input('Constraseña', 'password', 'password', null, errors)
+      +input('Repetir Constraseña', 'password', 'password1', null, errors)
+      button(type='submit') Grabar
+  else
+    p user no encontrado o vacio
+    form(method='post' action='/users/edit')
+      +input('Id', 'text', 'userId', '', null)
+      +input('Alias', 'text', 'nickname', null, null)
+      +input('Nombre', 'text', 'firstname', null, null)
+      +input('Apellido', 'text', 'lastname', null, null)
+      +input('Email', 'email', 'email', null, null)
+      +input('Fecha de nacimiento', 'date', 'birthdate', null, null)
+      +input('Constraseña', 'password', 'password', null, null)
+      +input('Repetir Constraseña', 'password', 'password1', null, null)
+      button(type='submit') Grabar

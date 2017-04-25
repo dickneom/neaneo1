@@ -1,0 +1,16 @@
+extends ../layout
+include ../mixins/dress_grid
+include ../mixins/links
+include ../mixins/pagination
+
+block content
+  h1 Lista de vestidos
+    span.small  (Mi Closet) 
+    +linkCreateDress
+  br
+
+  +paginationMyCloset(limit, page)
+
+  +showDressGrid(dresses, 'mycloset', 3)
+
+  +paginationMyCloset(limit, page)

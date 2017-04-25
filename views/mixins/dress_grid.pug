@@ -1,0 +1,155 @@
+include links
+
+//- numCols para 3 o 4 columnas
+mixin showDressGrid(dresses, type, numCols)
+  .row
+    if dresses
+      each dress in dresses
+        if numCols === 3
+          .col-sm-4
+            if type === 'index'
+              +showDressIndex(dress)
+            if type === 'closet' || type === 'wishes'
+              +showDressCloset(dress)
+            if type === 'mycloset'
+              +showDressMyCloset(dress)
+        if numCols === 4
+          .col-sm-3
+            if type === 'index'
+              +showDressIndex(dress)
+            if type === 'closet' || type === 'wishes'
+              +showDressCloset(dress)
+            if type === 'mycloset'
+              +showDressMyCloset(dress)
+    else
+      p no hay vestidos
+
+
+
+
+
+mixin showDressIndex(dress)
+  //- .panel.panel-default
+  .panel.panel-info
+    .panel-body
+      p.text-center= dress.id
+      img.center-block.img-circle.img-grid(src=dress.image width=120 height=180 alt=dress.image)
+      //-p= dress.image
+
+    .panel-heading
+      h3.text-center= dress.title
+      p= dress.color.color
+      p= dress.state.title
+      p= dress.brand.brand
+      if dress.forRent
+        p Precio alquiler: #{dress.priceForRent}
+      if dress.forSale
+        p Precio venta: #{dress.priceForSale}
+      p Precio original: #{dress.priceOriginal}
+
+      if dress.user
+        if dress.user.nickname
+          if sessionUser
+            //- a(href='/users/' + dress.user.id) #{dress.user.nickname}
+            +linkShowUser(dress.user.id, dress.user.nickname)
+          else
+            p #{dress.user.nickname}
+        else
+          if sessionUser
+            +linkShowUser(dress.user.id, dress.user.fullname)
+            //- a(href='/users/' + dress.user.id) #{dress.user.fullname}
+          else
+            p #{dress.user.fullname}
+      br
+
+    .panel-footer
+      +linkShowDress(dress.id)
+      //- a(href='/dresses/' + dress.id) Ver
+
+
+
+
+
+mixin showDressCloset(dress)
+  .panel.panel-info
+    .panel-body
+      p.text-center= dress.id
+      img.center-block.img-rounded.img-grid(src=dress.image width=120 height=180 alt=dress.image)
+      //-p= dress.image
+
+    .panel-heading
+      h3.text-center= dress.title
+      p= dress.color.color
+      p= dress.state.title
+      p= dress.brand.brand
+      if dress.forRent
+        p Precio alquiler: #{dress.priceForRent}
+      if dress.forSale
+        p Precio venta: #{dress.priceForSale}
+      p Precio original: #{dress.priceOriginal}
+      if dress.user
+        if dress.user.nickname
+          if sessionUser
+            //- a(href='/users/' + dress.user.id) #{dress.user.nickname}
+            +linkShowUser(dress.user.id, dress.user.nickname)
+          else
+            p #{dress.user.nickname}
+        else
+          if sessionUser
+            a(href='/users/' + dress.user.id) #{dress.user.fullname}
+          else
+            p #{dress.user.fullname}
+      br
+
+    .panel-footer
+      +linkShowDress(dress.id)
+      if sessionUser
+        +linkLikeDress(dress.id)
+        if dress.forSale
+          +linkBuyDress(dress.id)
+        if dress.forRent
+          +linkRentDress(dress.id)
+
+
+
+
+
+mixin showDressMyCloset(dress)
+  .panel.panel-info
+    .panel-body
+      p.text-center= dress.id
+      img.center-block.img-circle.img-grid(src=dress.image width=120 height=180 alt=dress.image)
+      //-p= dress.image
+
+    .panel-heading
+      h3.text-center= dress.title
+      p= dress.color.color
+      p= dress.state.title
+      p= dress.brand.brand
+      if dress.forRent
+        p Precio alquiler: #{dress.priceForRent}
+      if dress.forSale
+        p Precio venta: #{dress.priceForSale}
+      p Precio original: #{dress.priceOriginal}
+      if dress.user
+        if dress.user.nickname
+          if sessionUser
+            //- a(href='/users/' + dress.user.id) #{dress.user.nickname}
+            +linkShowUser(dress.user.id, dress.user.nickname)
+          else
+            p #{dress.user.nickname}
+        else
+          if sessionUser
+            a(href='/users/' + dress.user.id) #{dress.user.fullname}
+          else
+            p #{dress.user.fullname}
+      br
+
+    .panel-footer
+      +linkShowDress(dress.id)
+      +linkUpdateDress(dress.id)
+      +linkImagesDress(dress.id)
+      if dress.stateId === 1
+        +linkPublishDress(dress.id)
+      if dress.stateId === 2 || dress.stateId === 3
+        +linkUnpublishDress(dress.id)

@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  .container
+    h1 Ver un mensaje
+    .row
+      .col-sm-9
+        .row
+          .col-sm-6
+            if message
+              .panel.panel-info
+                .panel-heading
+                  h3= message.subject
+                  p De: #{message.userFrom.nickname}
+                  p Para: #{message.userTo.nickname}
+                  p Fecha: #{message.date}
+                .panel-body
+                  p Texto: #{message.text}
+                .panel-footer
+                  p Url: #{message.urlTo}
+                    a(href=message.urlTo): button ir
+
+      .col-md-3
+        p Publicidad
+

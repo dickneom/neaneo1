@@ -1,0 +1,14 @@
+extends ../layout
+include ../mixins/dress_grid
+include ../mixins/pagination
+
+block content
+  .page-header
+    h1 Lista de vestidos
+      small  (closet)
+
+  +paginationCloset(limit, page)
+
+  +showDressGrid(dresses, 'closet', 3)
+
+  +paginationCloset(limit, page)

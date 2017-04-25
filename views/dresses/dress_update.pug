@@ -1,0 +1,40 @@
+extends ../layout
+include ../mixins/form_input
+
+block content
+  h1 Editar Vestido
+
+  if (errors)
+    ul
+      each error in errors
+        li.error  Error en: #{error.path} error: #{error.message}
+
+  if dress
+    form(method='post' action='/dresses/update')
+      +input_readonly('Id', 'text', 'dressId', dress.id, errors)
+      +input_required('Titulo', 'text', 'title', dress.title, errors)
+      +input_required('Descripcion', 'text', 'description', dress.description, errors)
+
+      label(for='brandId') Marca
+      select(name='brandId')
+        option('selected' 'disabled') - Seleccione una -
+          each brand in brands
+            option(selected=(brand.id==dress.brandId) value=brand.id)= brand.brand
+      br
+
+      label(for='colorId') Color
+      select(name='colorId')
+        option('selected' 'disabled') - Seleccione uno -
+          each color in colors
+            option(selected=(color.id==dress.colorId) value=color.id)= color.color
+      br
+      +input_checkbox('En alquiler', 'forRent', dress.forRent)
+      +input_required('Precio para alquiler', 'text', 'priceForRent', dress.priceForRent, errors)
+      +input_checkbox('En venta', 'forSale', dress.forSale)
+      +input_required('Precio de venta', 'text', 'priceForSale', dress.priceForSale, errors)
+      +input_required('Precio Original', 'text', 'priceOriginal', dress.priceOriginal, errors)
+      +input_readonly('Propietario', 'text', 'userId', dress.userId, errors)
+      button(type='submit') Grabar
+
+  else
+    p dress no encontrado o vacio

@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+    h1 Bienvenido a DressCloste
+    h3 Recuperación de clave
+    p Un correo fue enviado a su email: #{user.email}
+    p Revise un su correo electronico para atenticar su cuenta.
+
+    //- Esto es solo para pruebas: permite autenticar un usuario con el enlace
+    //- mostrado a continuacion
+    hr
+    p: a(href=tempRoute) Link en el email (Confirmar)
+    hr
+    p=tempMessage
+    //- Hasta aqui

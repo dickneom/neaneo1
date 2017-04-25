@@ -1,0 +1,50 @@
+mixin linkShowDress(id)
+  a(href='/dresses/' + id): button.btn.btn-primary.btn-sm mxVer
+
+mixin linkUpdateDress(id)
+  a(href='/dresses/' + id + '/update'): button.btn.btn-success.btn-sm mxActualizar
+
+mixin linkImagesDress(id)
+  a(href='/dresses/' + id + '/images'): button.btn.btn-success.btn-sm mxImagen
+
+mixin linkPublishDress(id)
+  a(href='/dresses/' + id + '/publish'): button.btn.btn-info.btn-sm mxPublicar
+
+mixin linkUnpublishDress(id)
+  a(href='/dresses/' + id + '/publish_un'): button.btn.btn-warning.btn-sm mxRetirar
+
+mixin linkBuyDress(id)
+  a(href='/dresses/' + id + '/buy'): button.btn.btn-warning.btn-sm mxComprar
+
+mixin linkLikeDress(id)
+  a(href='/dresses/' + id + '/like'): button.btn.btn-warning.btn-sm mxMe gusta
+
+mixin linkDislikeDress(id)
+  a(href='/dresses/' + id + '/dislike'): button.btn.btn-warning.btn-sm mxYa no me gusta
+
+mixin linkRentDress(id)
+  a(href='/dresses/' + id + '/rent'): button.btn.btn-warning.btn-sm mxAlquilar
+
+mixin linkCreateDress()
+  a(href='/dresses/create'): button.btn.btn-success.btn-sm mxAgregar Vestido
+
+mixin linkShowUser(id, name)
+  a(href='/users/' + id): button.btn.btn-success.btn-sm mx #{name}
+
+mixin linkChangePictUser(id)
+  a(href='/users/' + id + '/images'): button.btn.btn-success.btn-sm mxCambiar foto
+
+mixin linkChangePassUser(id)
+  a(href='/users/pass_change'): button.btn.btn-success.btn-sm mxCambiar Contraseña
+
+mixin linkUpdateUser(id)
+  a(href='/users/' + id + '/update'): button.btn.btn-success.btn-sm mxActualizar datos
+
+mixin linkCreateUser()
+  a(href='/users/create'): button.btn.btn-success.btn-sm mxAgregar Usuario
+
+mixin linkAdminShowUser(id)
+  a(href='/users/' + id): button.btn.btn-primary.btn-sm mxVer
+
+mixin linkAdminUpdateUser(id)
+  a(href='/users/' + id + '/update'): button.btn.btn-primary.btn-sm mxEditar

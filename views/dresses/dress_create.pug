@@ -1,0 +1,64 @@
+extends ../layout
+include ../mixins/form_input
+
+block content
+  h1 Crear Vestido
+
+  if (errors)
+    ul
+      each error in errors
+        li.error  Error en: #{error.path} error: #{error.message}
+
+  if dress
+    p dress encontrado
+    form(method='post' action='/dresses/create')
+      +input_readonly('Id', 'text', 'dressId', '', errors)
+      +input_required('Titulo', 'text', 'title', dress.title, errors)
+      +input_required('Descripcion', 'text', 'description', dress.description, errors)
+
+      label(for='brandId') Marca
+      select(name='brandId')
+        option('selected' 'disabled') - Seleccione una -
+          each brand in brands
+            option(selected=(brand.id==dress.brandId) value=brand.id)= brand.brand
+      br
+
+      label(for='colorId') Color
+      select(name='colorId')
+        option('selected' 'disabled') - Seleccione uno -
+          each color in colors
+            option(selected=(color.id==dress.colorId) value=color.id)= color.color
+      br
+
+      +input_required('Precio para alquiler', 'text', 'priceForRent', dress.priceForRent, errors)
+      +input_required('Precio de venta', 'text', 'priceForSale', dress.priceForSale, errors)
+      +input_required('Precio Original', 'text', 'priceOriginal', dress.priceOriginal, errors)
+      +input_readonly('Propietario', 'text', 'userId', sessionUser.id, errors)
+      button(type='submit') Grabar
+  else
+    p dress no encontrado o vacio
+    form(method='post' action='/dresses/create')
+      +input_readonly('Id', 'text', 'dressId', '', null)
+      +input_required('Titulo', 'text', 'title', null, null)
+      +input_required('Descripcion', 'text', 'description', null, null)
+
+      label(for='brandId') Marca
+      select(name='brandId')
+        option('selected' 'disabled') - Seleccione una -
+          each brand in brands
+            //- option(selected=(brand.id==dress.brandId) value=brand.id)= brand.brand
+            option(value=brand.id)= brand.brand
+      br
+
+      label(for='colorId') Color
+      select(name='colorId')
+        option('selected' 'disabled') - Seleccione uno -
+          each color in colors
+            //- option(selected=(color.id==dress.colorId) value=color.id)= color.color
+            option(value=color.id)= color.color
+      br
+      +input_required('Precio para alquiler', 'text', 'priceForRent', null, errors)
+      +input_required('Precio de venta', 'text', 'priceForSale', null, errors)
+      +input_required('Precio Original', 'text', 'priceOriginal', null, null)
+      +input_readonly('Propietario', 'text', 'userId', sessionUser.id, null)
+      button(type='submit') Grabar

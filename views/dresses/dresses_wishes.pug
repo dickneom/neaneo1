@@ -1,0 +1,14 @@
+extends ../layout
+include ../mixins/dress_grid
+include ../mixins/pagination
+
+block content
+  .page-header
+    h1 Lista de vestidos
+      small  (favoritos / deseos)
+
+  +paginationWishes(limit, page)
+
+  +showDressGrid(dresses, 'wishes', 3)
+
+  +paginationWishes(limit, page)

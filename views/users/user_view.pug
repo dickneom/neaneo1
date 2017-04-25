@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  //-h1 Ver Usuario
+
+    if user
+      p= user.id
+      p= user.nickname
+      p= user.fullname
+      p= user.email
+    else
+      p user no encontrado o vacio
+
+  .row
+    .col-sm-8.col-sm-offset-2
+      .panel.panel-info
+        .panel-heading
+          h3 Ver datos de un usuario
+        .panel-body
+          .row
+            .col-sm-6
+              img.img-circle(src=user.picture width=180 height=300 alt=user.picture)
+              //- p= user.picture
+            .col-sm-6
+              p= user.id
+              p Alias #{user.nickname}
+              p Nombre: #{user.fullname}
+              p Email: #{user.email}
+        .panel-footer
+          .row
