@@ -73,7 +73,7 @@ router.get('/', function(req, res) {
         }
 
         var user = null;
-        if (req.session.userLoged) {
+        if (req.session && req.session.userLoged) {
             user = req.session.userLoged;
         }
 
