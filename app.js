@@ -10,10 +10,25 @@ var index = require('./routes/index');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 var register = require('./routes/register');
+var passRecover = require('./routes/pass_recover');
+var dressesCloset = require('./routes/dresses_closet');
+var dressesWishes = require('./routes/dresses_wishes');
+var dressesMycloset = require('./routes/dresses_mycloset');
 var dressView = require('./routes/dress_view');
+var dressUpdate = require('./routes/dress_update');
+var dressImages = require('./routes/dress_images');
+var dressPublish = require('./routes/dress_publish');
+var dressBuy = require('./routes/dress_buy');
+var dressCreate = require('./routes/dress_create');
+var users = require('./routes/users');
 var userProfile = require('./routes/user_profile');
 var userView = require('./routes/user_view');
-var users = require('./routes/users');
+var userUpdate = require('./routes/user_update');
+var userImages = require('./routes/user_images');
+var userPassChange = require('./routes/user_pass_change');
+// var userCreate = require('./routes/user_create');
+var messages = require('./routes/messages');
+var messageView = require('./routes/message_view');
 
 var session = expressSession({
     secret: 'lkjsfffws',
@@ -53,14 +68,30 @@ app.use(function(req, res, next) {
     next();
 });
 
+console.log('(APP.JS) Cargando rutas.');
 app.use('/', index);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/register', register);
+app.use('/pass_recover', passRecover);
+app.use('/dresses', dressesCloset);
+app.use('/dresses', dressesWishes);
+app.use('/dresses', dressesMycloset);
 app.use('/dresses', dressView);
+app.use('/dresses', dressUpdate);
+app.use('/dresses', dressImages);
+app.use('/dresses', dressPublish);
+app.use('/dresses', dressBuy);
+app.use('/dresses', dressCreate);
+app.use('/users', users);
 app.use('/users', userProfile);
 app.use('/users', userView);
-app.use('/users', users);
+app.use('/users', userUpdate);
+app.use('/users', userImages);
+app.use('/users', userPassChange);
+// app.use('/users', userCreate);
+app.use('/messages', messages);
+app.use('/messages', messageView);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
