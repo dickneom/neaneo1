@@ -44,6 +44,7 @@ module.exports.isAdmin = function(req, res, next) {
 / Inicia una session
 */
 module.exports.sessionInit = function sessionInit(req, res, user, rememberme) {
+    console.log('(SESSION.JS) *** *** *** *** Session iniciando');
     req.session.userLoged = {
         id: user.id,
         nickname: user.nickname,
@@ -69,6 +70,7 @@ module.exports.login = function sessionInit(req, res, email, passEncrypt, rememb
             }
         }).then(function(user) {
             if (user) {
+                console.log('(SESSION.JS) Usuario encontrado. Creando session.');
                 req.session.userLoged = {
                     id: user.id,
                     nickname: user.nickname,
