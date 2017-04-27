@@ -5,12 +5,13 @@ var express = require('express');
 var router = express.Router();
 
 var db = require('../models/db');
+var global = require('../config/global');
 var controlUser = require('../control/users');
 var controlEmail = require('../control/email');
 var controlSession = require('../control/session');
 
 var PASS_SIZE_MIN = 6;
-var IMAG_USER_ANON = 'http://res.cloudinary.com/cloud-dc/image/upload/v1487441736/brwltuenzajetyxciozo.png';
+// var IMAG_USER_ANON = 'http://res.cloudinary.com/cloud-dc/image/upload/v1487441736/brwltuenzajetyxciozo.png';
 
 /**
 / Metodo GET para la ruta /register, para el registro de un usuario
@@ -39,7 +40,7 @@ router.post('/', function(req, res, next) {
     user.email = req.body.email;
     user.birthdate = req.body.birthdate;
     user.password = req.body.password;
-    user.picture = IMAG_USER_ANON;
+    user.picture = global.IMAG_USER_ANON;
 
     var pass = req.body.password1;
     var clavesIguales = true;
