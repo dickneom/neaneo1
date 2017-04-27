@@ -42,10 +42,10 @@ router.get('/', function(req, res, next) {
         limit: limit,
         offset: offset
     }).then(function(users) { // Agui meto una funcion anonima porque nadie sabe (ni Google) como ponerla afuera, si ya sé que este codigo lo voy a utilizar de nuevo, pero a reescribir, que mas dá
-        console.log('(USERS.JS) users', users);
+        // console.log('(USERS.JS) users', users);
         for (var user in users) {
             if (users.hasOwnProperty(user)) {
-                console.log('user: ', users[user].id);
+                console.log('user: ', users[user].id, users[user].name);
             }
         }
 
