@@ -20,10 +20,7 @@ mixin menu-top(sessionUser)
             li: a(href='/dresses/closet') Closet
           if (sessionUser)
             if (pageName !== 'dresses_wishes')
-              li:
-                | a(href='/dresses/wishes')
-                | img(src='/images/brand/likes.png' alt='Likes' width=25 height=25)
-                | Favoritos
+              li: a(href='/dresses/wishes') img(src='/images/brand/likes.png' alt='Likes' width=25 height=25) Favoritos
             if (pageName !== 'user_profile')
               li: a(href='/users/profile') Perfil
             li: a(href='/messages') Mensajes 
