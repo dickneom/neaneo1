@@ -18,7 +18,8 @@ var DRESSES_FOR_PAGE = 9;
 / 		showDresses(dresses) // showDresses es una funcion que muestra los vestidos
 / Respuesta encontrada con node: TODO JUNTO.
 */
-router.get('/closet', controlSession.isSession, function(req, res, next) {
+//router.get('/closet', controlSession.isSession, function(req, res, next) {
+router.get('/closet', controlSession.isSession, function(req, res) {
     console.log('(DRESSES.JS) Atendiendo la ruta /dresses/closet GET');
     console.log('Aqui nesecito presentar los vestidos solitados. Pero con node tengo que usar sequelize. Porque no hay como separar la busqueda de la presentacion.');
 
