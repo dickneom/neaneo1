@@ -1,7 +1,9 @@
 include mixins/dress_grid
 include mixins/pagination
 include mixins/form_input
+include mixins/head
 
++head()
 block content
   .container
     p 0979253803
@@ -39,15 +41,7 @@ block content
             +input_required('Fecha de nacimiento', 'date', 'birthdate', null, errors)
             +input_required('Constraseña', 'password', 'password', null, errors)
             +input_required('Confirmar Constraseña', 'password', 'password1', null, null)
-            button(type='submit') Grabar
-
-            p Nombre:
-            p Apellido:
-            p Fecha de nacimiento:
-            p Email:
-            p Contraseña:
-            p Confirmar contraseña:
-            p Registrarse
+            button(type='submit') Registro
             p o
             p Registrarse con facebook
 
