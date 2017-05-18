@@ -1,4 +1,3 @@
-extends layout
 include mixins/dress_grid
 include mixins/pagination
 include mixins/form_input
@@ -31,13 +30,13 @@ block content
       .col-sm-4
         .panel
           p Crea tu closet
-          form(action='' method='POST' rol='form')
+          form(action='' method='post' rol='form')
             +input_readonly('Id', 'text', 'userId', '', errors)
-            +input_required('Alias', 'text', 'nickname', user.nickname, errors)
-            +input_required('Nombre', 'text', 'firstname', user.firstname, errors)
-            +input_required('Apellido', 'text', 'lastname', user.lastname, errors)
-            +input_required('Email', 'email', 'email', user.email, errors)
-            +input_required('Fecha de nacimiento', 'date', 'birthdate', user.birthdate, errors)
+            +input_required('Alias', 'text', 'nickname', null, errors)
+            +input_required('Nombre', 'text', 'firstname', null, errors)
+            +input_required('Apellido', 'text', 'lastname', null, errors)
+            +input_required('Email', 'email', 'email', null, errors)
+            +input_required('Fecha de nacimiento', 'date', 'birthdate', null, errors)
             +input_required('Constraseña', 'password', 'password', null, errors)
             +input_required('Confirmar Constraseña', 'password', 'password1', null, null)
             button(type='submit') Grabar
