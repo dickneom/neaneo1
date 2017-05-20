@@ -1,79 +1,135 @@
 include mixins/dress_grid
 include mixins/pagination
 include mixins/form_input
-include mixins/head
+include mixins/index_head
 
 html
-  +head()
+  head
+    +head()
   body
     .container
       p 0979253803
       p info@neaneo.com
 
-      ul
-        li ¿Cómo funciona?
-        li Ingresar
-        li Favoritos
-        li Bolsa de compras
+      ul.nav.navbar-nav.navbar-right
+        li: a(href='') ¿Cómo funciona?
+        li: a(href='/login') Ingresar
+          span.glyphicon-log-in
+        li: a(href='/dresses/closet') Closet
+        li: a(href='') Favoritos
+        li: a(href='') Bolsa de compras
 
       h2 NEA NEO
       h3 Tu vestido ideal
+      hr
+      ul.nav.navbar-nav
+        li: a(href='') Vestidos
+        li: a(href='') Rentabiliza tu armario
+        li: a(href='') Blog
+        li: a(href='') Buscar
+
+    .container
+      .jumbotron
+        //-.col-sm-12
+          //-.panel.panel-info
+            //-.panel-heading
+        .row
+          .col-sm-7
+            h2.text-center Conectamos a mujeres que tienen
+            h2.text-center vestidos en su armario
+            h2.text-center que ya no usan, con quienes
+            h2.text-center están buscando ¡Qué
+            h2.text-center ponerse!
+          .col-sm-5
+            .panel.panel-warning
+              .panel-heading
+                p Crea tu closet
+                form.form-inline(action='/register' method='post' role='form')
+                  +input_readonly('Id', 'text', 'userId', '', errors)
+                  +input_required('Alias', 'text', 'nickname', null, errors)
+                  +input_required('Nombre', 'text', 'firstname', null, errors)
+                  +input_required('Apellido', 'text', 'lastname', null, errors)
+                  +input_required('Email', 'email', 'email', null, errors)
+                  +input_required('Fecha de nacimiento', 'date', 'birthdate', null, errors)
+                  +input_required('Constraseña', 'password', 'password', null, errors)
+                  +input_required('Confirmar Constraseña', 'password', 'password1', null, null)
+                  button(type='submit') Registro
+              .panel-foot
+                p.text-center o
+                p.text-center Registrarse con facebook
+
+    .container
+      .row
+        .col-sm-6
+          .panel.panel-info
+            h2 Compra Vestidos
+            p Vestidos como nuevos a menor precio
+            p Encuentra tu vestido ideal
+            p Obten más por menos
+            p Dale un respiro a tu bolsillo
+            p Ayuda al planeta
+            p Reutiliza
+            p ¿Cómo funciona?
+        .col-sm-6
+          .panel.panel-info
+            h2 Vende tus vestidos
+            p Tienes dinero congando en tu armario
+            .row
+              .col-sm-6
+                p Servicio Outlet
+                p Crea tu closet
+                p Tú nos entregas las fotos
+                p Validamos tu publicación
+                p Tabla fija de comisiones
+                p ¿Cómo funciona?
+              .col-sm-6
+                p Servicio Premium
+                p Session de fotos
+                p profesionales a tu vestido
+                p Tú decides el precio
+                p Promoción
+                p ¿Cómo funciona?
+      .row
+        .col-sm-6
+          .panel.panel-info
+            h2 Alquila tu vestido
+            p y estrena en cada ocasión
+            p Es muy sencillo
+            p Disfrútalo durante 4 o 5 días
+            p Tintorería siempre incluida
+            p Cubrimos cualquier accidente
+            p Pruébatelo gratis en casa
+            p ¿Cómo funciona?
+        .col-sm-6
+          .panel.panel-info
+            h2 Pon tus vestidos en alquiler
+            p y rentabiliza tu armario
+            p Mándanos tu vestido y gana dinero cada vez que
+            p se alquile
+            p Envíanos fotos de tus prendas
+            p Ponemos en alquiler los vestidos seleccionados
+            p En 5 alquileres recuperas el costo de tu vestido
+            p Lo puedes usar cuando quieras
+            p ¿Cómo funciona?
+
+    .container
+      h2 Beneficios
+      ul
+        li Servicio a domicilio
+        li Pruebatelos en tu casa
+        li Devolución gratuita por 24 horas
+        li Tintorería incluida
+
+      h3 NEA NEO
+      P Tu vestido ideal
 
       ul
-        li Vestidos
-        li Rentabiliza tu armario
-        li Blog
-        li Buscar
-    .container
-      .row
-        .col-sm-8
-          p Conectamos a mujeres que tienen
-          p vestidos en su armario
-          p que ya no usan, con quienes están buscando ¡Qué ponerse!
-        .col-sm-4
-          .panel
-            p Crea tu closet
-            form(action='' method='post' rol='form')
-              +input_readonly('Id', 'text', 'userId', '', errors)
-              +input_required('Alias', 'text', 'nickname', null, errors)
-              +input_required('Nombre', 'text', 'firstname', null, errors)
-              +input_required('Apellido', 'text', 'lastname', null, errors)
-              +input_required('Email', 'email', 'email', null, errors)
-              +input_required('Fecha de nacimiento', 'date', 'birthdate', null, errors)
-              +input_required('Constraseña', 'password', 'password', null, errors)
-              +input_required('Confirmar Constraseña', 'password', 'password1', null, null)
-              button(type='submit') Registro
-              p o
-              p Registrarse con facebook
-
-    .container
-      .row
-        .col-sm-6
-          h2 Compra Vestidos
-        .col-sm-6
-          h2 Vende tus vestisdos
-      .row
-        .col-sm-6
-          h2 Alquila tu vestido
-        .col-sm-6
-          h2 Pon tus vestidos en alquiler
-    
-    h2 Beneficios
-    p Servicio a domicilio
-    p Pruebatelos en tu casa
-    p Devolución gratuita por 24 horas
-    p Tintorería incluida
-
-    h3 NEA NEO
-    P Tu vestido ideal
-
-    ul
-      li ¿Quienes somos?
-      li ¿Como funciona?
-      li Contacto
-      li Terminos y Condiciones
-      li Politica de Privacidad
-      li info@neaneo.com
+        li ¿Quienes somos?
+        li ¿Cómo funciona?
+        li Contacto
+        li Terminos y Condiciones
+        li Politica de Privacidad
+        li info@neaneo.com
 
     //- script(src='/jquery/dist/jquery.js')
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js")

@@ -1,0 +1,12 @@
+
+li {
+    display: inline;
+}
+
+.row {
+    display: table; 
+}
+
+.col-sm-6 {
+    display: table-cell;
+}
