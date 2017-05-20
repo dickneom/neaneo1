@@ -4,7 +4,7 @@
 var Sequelize = require('sequelize');
 
 // PARA BASE DE DATOS SQLITE PARA DESARROLLO
-var sequelize = new Sequelize('', '', '', {
+/*var sequelize = new Sequelize('', '', '', {
     dialect: 'sqlite',
     storage: './db/dc.db',
     define: {
@@ -12,7 +12,7 @@ var sequelize = new Sequelize('', '', '', {
         freezeTableName: true
     }
 });
-
+*/
 // PARA BASE DE DATOS POSTGRES PARA PRUEBAS
 /*var sequelize = new Sequelize('avd_test', 'dickneom', '1', {
     host: 'localhost',
@@ -24,14 +24,14 @@ var sequelize = new Sequelize('', '', '', {
 });*/
 
 // PARA BASE DE DATOS POSTGRES PARA PRODUCCION
-/*var sequelize = new Sequelize('daqmqmiaa9eb8s', 'ycwhuijnrcadoj', '2a6181b169873ed4e81c7b9b9427a55633d6e2cb43a0629fc6806467ef80b272', {
+var sequelize = new Sequelize('daqmqmiaa9eb8s', 'ycwhuijnrcadoj', '2a6181b169873ed4e81c7b9b9427a55633d6e2cb43a0629fc6806467ef80b272', {
   host: 'ec2-23-21-111-81.compute-1.amazonaws.com',
   dialect: 'postgres',
   define: {
     freezeTableName: true,
     underscored: true
   }
-});*/
+});
 
 /*sequelize.sync({
     force: true

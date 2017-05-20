@@ -47,8 +47,10 @@ router.get('/:dressId([0-9]+)', function(req, res, next) {
 
 
             console.log('(DRESS_VIEW.JS) Vestido encontrado. dress: ', dress.image);
-            for (var i = 0; i < dress.photos.length; i++) {
-                console.log('(DRESS_VIEW.JS) Vestido encontrado. dress: ', dress.photos[i].photo_url);
+            if (dress.photos.length > 0) {
+                for (var i = 0; i < dress.photos.length; i++) {
+                    console.log('(DRESS_VIEW.JS) Vestido encontrado. dress: ', dress.photos[i].photo_url);
+                }
             }
 
 
